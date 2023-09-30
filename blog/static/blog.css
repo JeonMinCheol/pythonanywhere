@@ -60,3 +60,7 @@ h4 {
 .post h1 a:visited {
   color: #000000;
 }
+
+.intruder-image-list {
+  object-fit: cover;
+}
