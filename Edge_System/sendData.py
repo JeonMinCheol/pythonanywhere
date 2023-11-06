@@ -13,6 +13,8 @@ exist_ok=False,  # existing project/name ok, do not increment
 save_txt=False,  # save results to *.txt
 name='exp',  # save results to project/name
 
+counter = 1
+
 class SendData:
     HOST = "http://127.0.0.1:8000"
     username = "admin"
@@ -36,7 +38,7 @@ class SendData:
         now.isoformat()
         save_dir = increment_path('runs/detect/exp', exist_ok=exist_ok)  # increment run
         
-        self.title = request["title"]
+        self.title = counter + request["title"]
         self.text = request["text"]
         image = request["image"]
         
