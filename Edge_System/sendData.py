@@ -18,21 +18,10 @@ class SendData:
     HOST = "http://sdkyu12345.pythonanywhere.com"
     username = "admin"
     password = "my0504"
-    token = ''
     title = ''
     text = ''
 
-    def __init__(self):
-        res = requests.post(self.HOST + '/api-token-auth/', {
-            'username': self.username,
-            'password': self.password
-        })
-
-        res.raise_for_status()
-
-        self.token = res.json()['token']
-
-    def send(self, request, saveName):
+    def send(self, request, saveName, token):
         now = datetime.now()
         now.isoformat()
         save_dir = increment_path(
@@ -51,7 +40,7 @@ class SendData:
         # cv2.imwrite(full_path, dst)
 
         headers = {'Authorization': 'JWT ' +
-                   self.token, 'Accept': 'application/json'}
+                   token, 'Accept': 'application/json'}
 
         data = {
             'author': 1,
